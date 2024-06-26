@@ -12,10 +12,12 @@ const collectEmployees = function() {
       lastName: null,
       salary: null
     };
-    employee.firstName = prompt("Employee First Name");
-    employee.lastName = prompt("Employee Last Name");
-    employee.salary = prompt("Employee Salary");
-    // listOfEmployee = [].concat(listOfEmployee, employee);
+    employee.firstName = prompt("Enter employee first name").trim();
+    employee.lastName = prompt("Enter employee last name").trim();
+    employee.salary = prompt("Enter " + employee.firstName + " " + employee.lastName.charAt(0) + ". salary", 0).trim(); // check the input by isNaN(Number(salary))
+    while ((Number(employee.salary) < 0) || isNaN(Number(employee.salary))) {
+      employee.salary = prompt("Invalid number. Please enter employee: " + employee.firstName + " " + employee.lastName.charAt(0) + ". salary again.", 0);
+    }
     listOfEmployee.push(employee);
     addMore = confirm("Add more employee?");
   }
